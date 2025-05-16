@@ -13,24 +13,24 @@ app.post("/generate", async (req, res) => {
     const response = await axios.post(
       "https://web.lumalabs.ai/api/models",
       {
-        prompt: "real estate 3D tour, fast loading, lightweight",
+        prompt: "Real estate 3D tour, extremely lightweight",
         image_url: imageUrl,
-        duration: "9s",
+        duration: "5s",
         quality: "low"
       },
       {
         headers: {
-          Authorization: "Bearer luma-493eaa8a-4a0d-4d63-bbf3-2acad14a9c2b-15effffa-c881-4306-bdb2-69738962e09f", // 꼭 수정하세요!
+          Authorization: "Bearer luma-493eaa8a-4a0d-4d63-bbf3-2acad14a9c2b-15effffa-c881-4306-bdb2-69738962e09f",
           "Content-Type": "application/json"
         }
       }
     );
 
-    res.json({ videoUrl: response.data.result_url });
+    res.json({ glbUrl: response.data.result_url });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`zzim-glb-generator running on port ${port}`));
+app.listen(port, () => console.log(`Server running on port ${port}`));
